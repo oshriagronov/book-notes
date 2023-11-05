@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+<link rel="stylesheet" href="styles/home.css">
+<body>
+    <div class="head">
+        <h1>Summaries, Notes from Books I've Read</h1>
+        <p>Hey, My name is  Oshri Agronov and I built this site as part<br>
+            of my course as fullstack developer. <br> <br>
+            feel free to browse and checkout other projects of mine in <br>
+            my <a href="https://github.com/oshriv65">Github page</a>.
+        </p>
+        <div class="inputs">
+            <form action="/search" method="post">
+                <input type="text" name="userInput" placeholder="Search...">
+                <input type="submit" id="searchButton" value="Search">
+            </form>
+            <form action="/newEntry" method="post">
+                <input type="submit" id="newEntryButton" value="New entry">
+            </form>
+        </div>
+    </div>
+    
+    <% notes.forEach(note => { %>
+    <div class="box">
+        <img src="https://covers.openlibrary.org/b/isbn/<%= note.isbn %>-M.jpg" height="180px" alt="book cover"/>
+        <div class="info">
+            <h2><%= note.title %></h2>
+            <div class="rate">
+                <% for( let index = 0; index < note.rating; index++ ) { %>
+                    <label title="text">1 star</label>
+                <% } %>
+                <p>Rating:</p>
+            </div>
+            <p>Date read: <%= note.date_read %></p>
+            <p><%= note.text %></p>
+        </div>
+    </div>
+    <% }) %>
+
+
+</body>
+<%- include('partials/footer.ejs') %>
+</html>

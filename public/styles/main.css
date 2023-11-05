@@ -1,0 +1,25 @@
+body{
+    background-color: #F9F7F7;
+    font-family: 'Roboto', sans-serif;
+    color: #112D4E;
+}
+
+
+input[type="text"]{
+    width: 300px;
+    height: 22px;
+    border: 1px solid #112D4E;
+    border-radius: 3px;
+}
+
+input[type="submit"]{
+    border: 1px solid #112D4E;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 25px;
+    border-radius: 6px;
+}
+
+
+footer{
+    text-align: center;
+}

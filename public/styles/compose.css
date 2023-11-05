@@ -1,0 +1,78 @@
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    align-items: center;
+    max-width: 700px;
+    justify-content: left;
+}
+
+#book-title{
+    margin-left: 5px;
+}
+
+div{
+    margin: 10px 0px;
+}
+
+
+label{
+    padding: 10px 0px;
+}
+textarea{
+    border-radius: 6px;
+    border: #3F72AF 1px solid;
+}
+
+#date-read{
+    margin-right: 5px;
+}
+
+input[type="submit"]{
+    background-color: #3F72AF;
+    color: #F9F7F7;
+}
+
+.rate {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    align-items: center;
+    height: 15px;
+    margin: 10px 0px;
+}
+
+.rate p{
+    padding-right: 5px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size: 15px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
