@@ -8,6 +8,8 @@
 import bodyParser from "body-parser"
 import express from "express"
 import pg from "pg"
+import axios from "axios"
+import fs from "fs"
 
 const app = express();
 const port = "3000";
@@ -36,6 +38,30 @@ app.get('/', async(req, res) =>{
     catch(err){
         console.log(err);
         alert("Something went wrong with the database.");
+    }
+});
+
+
+app.get("/cover/:isbn", async(req, res) =>{
+    const imageUrl = `https://covers.openlibrary.org/b/isbn/${req.params.isbn}-M.jpg`;
+    try {
+        const imageResponse = await axios.get(imageUrl, {
+            responseType: 'arraybuffer'
+        });
+
+        const imageBuffer = imageResponse.data;
+        const contentType = imageResponse.headers['content-type'];
+
+        res.writeHead(200, {
+            'Content-Type': contentType,
+            'Content-Length': imageBuffer.length
+        });
+
+        res.write(imageBuffer);
+        res.end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving image');
     }
 });
 
@@ -74,14 +100,8 @@ app.post("/submitNewEntry", async(req, res) => {
     const isbn = req.body.isbn;
     let title;
     try{
-        await fetch(`https://openlibrary.org/isbn/${isbn}.json`)
-        .then(res => res.json())
-        .then((out) => {
-            title = out.title;
-        }).catch(err => console.error(err));
-        if(title == undefined || null){
-            throw "ISBN isn't valid";
-        }
+        const respond = await axios.get(`https://openlibrary.org/isbn/${isbn}.json`);
+        const title = respond.data.title;
         const content = req.body.content;
         const rating = req.body.rate;
         const dateArray = req.body.date.split('-')
@@ -89,10 +109,12 @@ app.post("/submitNewEntry", async(req, res) => {
         try{
             await db.query("INSERT INTO note (isbn, title, rating, date_read, text) VALUES ($1, $2, $3, $4, $5)", [isbn, title, rating, date, content]);
         }
+        
         catch(err){
             console.log(err);
             alert("Something went wrong with the database, redirect you to the home page.")
         }
+        
         finally{
             res.redirect("/");
         }
