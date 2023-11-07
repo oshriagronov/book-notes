@@ -9,7 +9,6 @@ import bodyParser from "body-parser"
 import express from "express"
 import pg from "pg"
 import axios from "axios"
-import fs from "fs"
 
 const app = express();
 const port = "3000";
@@ -56,12 +55,11 @@ app.get("/cover/:isbn", async(req, res) =>{
             'Content-Type': contentType,
             'Content-Length': imageBuffer.length
         });
-
         res.write(imageBuffer);
         res.end();
+
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error retrieving image');
     }
 });
 
@@ -98,7 +96,6 @@ app.post("/newEntry", (req, res) => {
 
 app.post("/submitNewEntry", async(req, res) => {
     const isbn = req.body.isbn;
-    let title;
     try{
         const respond = await axios.get(`https://openlibrary.org/isbn/${isbn}.json`);
         const title = respond.data.title;
