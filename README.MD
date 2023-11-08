@@ -37,7 +37,7 @@ to create a new note.
 ## Screenshots
 ![home](./public/assets/home.png)
 
-![compose](./public/assets/copmpose.png)
+![compose](./public/assets/compose.png)
 
 ## Setup
 To run "Book Notes" you need couple of softwares:
