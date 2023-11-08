@@ -66,6 +66,6 @@ localhost:3000
 5. And you are done! enjoy you personal post site.
 
 ## Acknowledgements
-I would like to thank openLibrary for give free access to their api, it's massively help me with the project.
+I would like to thank openLibrary for give free access to their api, it's massively help me with the project. <br>
 I would like to thank to Dr. Angela Yu for creating the great course "The Complete 2023 Web Development Bootcamp".
 > Link to the course [here](https://www.udemy.com/course/the-complete-web-development-bootcamp/?kw=The+Complete+2023+Web+Development+Bootcamp&src=sac)
