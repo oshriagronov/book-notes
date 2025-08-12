@@ -14,15 +14,15 @@
 The project is a site where you write short opinions about the books and they are called “Notes”.
 
 ### Key features
-- The site automaticly fetch the book cover and title by the isbn the user enter through openLibrary api.
+- The site automatically fetch the book cover and title by the isbn the user enter through openLibrary api.
 - The user can search through the notes by entering the title name or part of it.
 - All the data is saved locally using Postgres.
 
 ## Technologies used
-- js, html&css.
+- js, html & css.
 - nodejs.
 - npm modules: express, pg, bodyParser, axios.
-- Postgres.
+- PostgresSQL.
 openLibrary api
 
 ## Media
@@ -39,7 +39,7 @@ To get a local copy up and running follow these simple steps.
 - Linux, MacOS or Windows
 - nodejs
 - npm
-- postGresSQL
+- postgresSQL
 
 ### Installation
 
