@@ -4,7 +4,7 @@
     <img src="public/assets/logo.png" alt="Logo" width="200" height="200">
   </a>
 
-<h3 align="center">LocalChat</h3>
+<h3 align="center">Book Notes</h3>
   <p align="center">
     Simple site where you share an short paragraph about a book you read .
   </p>
